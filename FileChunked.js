@@ -1,7 +1,44 @@
 const fs = require('fs');
+const path = require('path');
 
 class FileChunked {
+	getDS(){
+		let DS = path.sep;
+		if(typeof DS === 'undefined'){
+			var isWin = process.platform === "win32";
+			if(isWin){
+				DS = '\\';	
+			}else{
+				DS = '/';	
+			}
+		}
+		return DS;
+	}
+	mkdirRecursive(path){
+		const DS = this.getDS();
+		
+		const folders = path.split(DS);
+		
+		let checkPath = "";
+		let checkPathParts = [];
+		for(let i=0; i<folders.length; i++){
+			checkPathParts.push(folders[i]);
+			if(folders[i] == "." || folders[i] == ""){
+				continue;
+			}
+			checkPath = checkPathParts.join(DS);
+			if (!fs.existsSync(checkPath)){
+				fs.mkdirSync(checkPath);
+			}
+		}
+		
+	}
 	upload(file){
+		
+		if (!fs.existsSync(file.chunkStorage)){
+			this.mkdirRecursive(file.chunkStorage);
+		}
+		
 		let oldTmpFileName = file.filePath;
 		if(file.chunkIndex < file.totalChunksCount - 1){ //merge
 			
