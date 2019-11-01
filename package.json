@@ -1,0 +1,18 @@
+{
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "File Chunk or simple upload",
+  "main": "FileChunked.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tedi Cela",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  }
+}
