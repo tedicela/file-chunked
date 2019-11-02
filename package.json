@@ -1,6 +1,6 @@
 {
   "name": "file-chunked",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "File Chunk or simple upload",
   "main": "FileChunked.js",
   "scripts": {
